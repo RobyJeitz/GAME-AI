@@ -21,7 +21,7 @@ def DT_LEARNING(examples, labels, attributes, parent_examples, parent_labels):
         if labels[0] == 0:
             return '-'
         else:
-            return '+' #todo
+            return '+'
     elif len(attributes) == 0:
         if PLURALITY_VAL(labels) == 0:
             return '-'
@@ -54,13 +54,11 @@ def DT_LEARNING(examples, labels, attributes, parent_examples, parent_labels):
                 exm = examples.copy()
                 for exp in exm:
                     if exp[at] == cv:
-                        #set_trace()
                         ls.append(labels[examples.index(exp)])
                         exp.pop(at)
                         exs.append(exp)
                 atts = attributes.copy()
                 atts.pop(at)
-                #set_trace()
                 tree[cv] = DT_LEARNING(exs, ls, atts, examples, labels)
     return tree
 
@@ -111,7 +109,6 @@ def IMPORTANCE(attributes, examples, labels):
             
         atti = 0
         atti = results.index(max(results))
-        #set_trace()
         return atti
     return 0
 
@@ -156,7 +153,7 @@ examples = [['sunny', 'warm', 'normal', 'strong', 'warm', 'same'],
 labels = [1, 1, 0, 1, 0]
 attributes = ['sky', 'air', 'humid', 'wind', 'water', 'forecast']
 
-DT_LEARNING(examples, labels, attributes, examples, labels)
+print(DT_LEARNING(examples, labels, attributes, examples, labels))
 
 
 # In[ ]:
